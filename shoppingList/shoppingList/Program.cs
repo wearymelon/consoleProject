@@ -4,11 +4,15 @@
     {
         static string[] items = new string[2];
 
+        static int count = 0;
+
         static void addItem(int itemSlot, string itemAdded)
         {
             if (items.Length > itemSlot)
             {
                 items[itemSlot] = itemAdded;
+
+                
             }
 
             else
@@ -23,9 +27,35 @@
                 items = tempItems;
 
                 items[itemSlot] = itemAdded;
+
+                
             }
+            count++;
         }
 
+        static void removeItem(string value)
+        {
+            for(int i = contains(value); i < items.Length - 1; i ++)
+            {
+                items[i] = items[i + 1];
+            }
+
+            items[items.Length - 1] = "";
+
+            if (count <= items.Length / 2)
+            {
+                string[] tempArray = new string[items.Length / 2];
+
+                for(int i = 0; i < count; i ++)
+                {
+                    tempArray[i] = items[i];
+                }
+
+                items = tempArray;
+            }
+
+            count--;
+        }
 
         static void viewItems()
         {
@@ -33,6 +63,19 @@
             {
                 Console.WriteLine(items[i]);
             }
+        }
+
+        static int contains(string value)
+        {
+            for(int i = 0; i < items.Length; i ++)
+            {
+                if (items[i] == value)
+                {
+                    return i;
+                }
+                 
+            }
+            return -1;
         }
 
         static void Main(string[] args)
@@ -87,10 +130,17 @@
 
                     string itemRemoved = Console.ReadLine();
 
-                    if (/* make sure to check if the item that you want to remove is even in your list */)
+                    if (-1 == contains(itemRemoved))
                     {
 
+                        Console.WriteLine("item is not in your list. Please try again.");
 
+                    }
+
+                    else
+                    {
+
+                        removeItem(itemRemoved);
 
                         Console.WriteLine("Your item has been successfully removed. What would you like to do next");
                     }
