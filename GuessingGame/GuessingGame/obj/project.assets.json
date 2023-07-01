@@ -8,19 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Daniel.Makhmud\\.nuget\\packages\\": {}
+    "C:\\Users\\maxth\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "\\\\GMRDC1\\Folder Redirection\\Daniel.Makhmud\\Documents\\Visual Studio 2022\\Project\\guessingGame\\guessingGame\\guessingGame.csproj",
+      "projectUniqueName": "C:\\Users\\maxth\\OneDrive\\Documents\\Github\\ConsoleProjects\\GuessingGame\\guessingGame\\guessingGame.csproj",
       "projectName": "guessingGame",
-      "projectPath": "\\\\GMRDC1\\Folder Redirection\\Daniel.Makhmud\\Documents\\Visual Studio 2022\\Project\\guessingGame\\guessingGame\\guessingGame.csproj",
-      "packagesPath": "C:\\Users\\Daniel.Makhmud\\.nuget\\packages\\",
-      "outputPath": "\\\\GMRDC1\\Folder Redirection\\Daniel.Makhmud\\Documents\\Visual Studio 2022\\Project\\guessingGame\\guessingGame\\obj\\",
+      "projectPath": "C:\\Users\\maxth\\OneDrive\\Documents\\Github\\ConsoleProjects\\GuessingGame\\guessingGame\\guessingGame.csproj",
+      "packagesPath": "C:\\Users\\maxth\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maxth\\OneDrive\\Documents\\Github\\ConsoleProjects\\GuessingGame\\guessingGame\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Daniel.Makhmud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maxth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -61,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

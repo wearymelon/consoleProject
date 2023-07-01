@@ -13,3 +13,18 @@
 \\GMRDC1\Folder Redirection\Daniel.Makhmud\Documents\Visual Studio 2022\Project\GuessingGame\GuessingGame\obj\Debug\net6.0\GuessingGame.pdb
 \\GMRDC1\Folder Redirection\Daniel.Makhmud\Documents\Visual Studio 2022\Project\GuessingGame\GuessingGame\obj\Debug\net6.0\GuessingGame.genruntimeconfig.cache
 \\GMRDC1\Folder Redirection\Daniel.Makhmud\Documents\Visual Studio 2022\Project\GuessingGame\GuessingGame\obj\Debug\net6.0\ref\GuessingGame.dll
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\bin\Debug\net6.0\guessingGame.exe
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\bin\Debug\net6.0\guessingGame.deps.json
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\bin\Debug\net6.0\guessingGame.runtimeconfig.json
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\bin\Debug\net6.0\guessingGame.dll
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\bin\Debug\net6.0\guessingGame.pdb
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\guessingGame.csproj.AssemblyReference.cache
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\guessingGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\guessingGame.AssemblyInfoInputs.cache
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\guessingGame.AssemblyInfo.cs
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\guessingGame.csproj.CoreCompileInputs.cache
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\guessingGame.dll
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\refint\guessingGame.dll
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\guessingGame.pdb
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\guessingGame.genruntimeconfig.cache
+C:\Users\maxth\OneDrive\Documents\Github\ConsoleProjects\GuessingGame\guessingGame\obj\Debug\net6.0\ref\guessingGame.dll
