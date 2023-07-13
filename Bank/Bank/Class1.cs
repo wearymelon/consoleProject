@@ -6,11 +6,11 @@
         //bank has an array of accounts (account is another class) vV
         //account has general info (money, username, password) vV
 
-        //balance, username, and password SHOULD NOT be public. 
+        //balance, username, and password SHOULD NOT be public. vV
 
         //make menu to login and deposit/withdraw/transfer money
 
-        //Bonus: make the account array work the same was as shopping list (expand/contract)
+        //make the account array work the same was as shopping list (expand/contract)
 
 
     }

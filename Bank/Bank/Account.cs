@@ -43,7 +43,12 @@ namespace Bank
             }
         }
 
-        private bool checkLogIn(string username, string password)
+        public void transfer(string username, string password, int amountOfMoney)
+        {
+
+        }
+
+        public bool checkLogIn(string username, string password)
         {
             if (this.username == username && this.password == password)
             {
