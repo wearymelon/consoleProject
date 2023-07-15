@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 
-namespace Bank
+namespace Bank2
 {
     public class Account
     {
@@ -27,12 +27,9 @@ namespace Bank
 
         }
 
-        public void deposit(string username, string password, int amountOfMoney)
+        public void deposit(int amountOfMoney)
         {
-            if(checkLogIn(username, password))
-            {
-                balance += amountOfMoney;
-            }
+            balance += amountOfMoney;
         }
 
         public void withdraw(string username, string password, int amountOfMoney)
@@ -41,11 +38,6 @@ namespace Bank
             {
                 balance -= amountOfMoney;
             }
-        }
-
-        public void transfer(string username, string password, int amountOfMoney)
-        {
-
         }
 
         public bool checkLogIn(string username, string password)
@@ -58,6 +50,28 @@ namespace Bank
             {
                 return false;
             }
+        }
+
+        public bool checkLogIn(string username)
+        {
+            if (this.username == username)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Account Copy()
+        {
+            Account result = new Account(username, password);
+
+            result.balance = balance;
+
+
+            return result;
         }
     }
 }
