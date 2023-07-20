@@ -20,7 +20,7 @@ namespace Bank2
             accounts = new Account[accountAmount];
         }
 
-        public void Add(Account account)
+        public void Add(string username, string password)
         {
             if(count >= accounts.Length)
             {
@@ -34,7 +34,7 @@ namespace Bank2
                 accounts = tempArray;
             }
 
-            accounts[count] = account;
+            accounts[count] = new Account(username,password);
 
             count++;
         }

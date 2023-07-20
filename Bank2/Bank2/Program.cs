@@ -1,5 +1,6 @@
 ﻿namespace Bank2
 {
+    using колбаса_с_картофелем = Bank;
     internal class Program
     {
         static void Main(string[] args)
@@ -14,19 +15,51 @@
 
             //make the account array work the same was as shopping list (expand vV/contract vV) vV
 
+
+
+            колбаса_с_картофелем bank = new колбаса_с_картофелем(4);
+            bool LoggedIn = false;
+
             Console.WriteLine("hey, welcome. plz log in or create account.");
 
             string response = Console.ReadLine();
 
-
             if (response == "log in")
             {
-                Console.WriteLine("plz enter username.");
+                while (!LoggedIn)
+                {
+                    Console.WriteLine("plz enter username.");
 
-                string userResponse = Console.ReadLine();
+                    string usernameResponse = Console.ReadLine();
+
+
+                    Console.WriteLine("plz enter password.");
+
+                    string passwordResponse = Console.ReadLine();
+
+
+                    int result = bank.Find(usernameResponse, passwordResponse);
+
+                    if (result == -1)
+                    {
+                        Console.WriteLine("this account doesn't exist. Would you like to make an account?");
+
+                        string response2 = Console.ReadLine();
+
+                        LoggedIn = false;
+
+                        if (response2 == "yes")
+                        {
+                            response = "create";
+
+                            LoggedIn = true;
+                        }
+                    }
+                    else LoggedIn = true;
+                }
             }
 
-            else if (response == "create")
+            if (response == "create")
             {
                 Console.WriteLine("plz make username.");
 
@@ -39,6 +72,16 @@
 
 
                 Console.WriteLine($"please confirm.\n username: {newUsername} \n password: {newPassword}");
+
+
+                string confirmResponse = Console.ReadLine();
+
+                if (confirmResponse == "yes")
+                {
+                    bank.Add(newUsername, newPassword);
+                }
+
+
             }
         }
     }
