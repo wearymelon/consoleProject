@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Bank2
 {
+    /// <summary>
+    /// sausage and potato bank
+    /// </summary>
     public class Bank
     {
         private Account[] accounts;
@@ -92,6 +95,14 @@ namespace Bank2
             accounts[Find(username, password)].withdraw(username, password, AmountOfMoney);
 
             accounts[Find(receiver)].deposit(AmountOfMoney);
+        }
+
+        public void PrintAccounts()
+        {
+            for (int i = 0; i < count; i ++)
+            {
+                accounts[i].Print();
+            }
         }
 
 

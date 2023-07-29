@@ -73,5 +73,10 @@ namespace Bank2
 
             return result;
         }
+
+        public void Print()
+        {
+            Console.WriteLine($"{username}, {password}");
+        }
     }
 }
