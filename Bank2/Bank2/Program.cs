@@ -43,7 +43,7 @@
                         string passwordResponse = Console.ReadLine();
 
 
-                        int result = bank.Find(usernameResponse, passwordResponse);
+                    bool result = bank.Login(username, password);
 
                         if (result == -1)
                         {
