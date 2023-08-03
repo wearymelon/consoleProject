@@ -10,7 +10,7 @@ namespace Bank2
     public class Account
     {
 
-        private int balance;
+        public int balance { get; private set; }
 
         private string username;
 

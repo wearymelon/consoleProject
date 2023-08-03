@@ -18,6 +18,7 @@ namespace Bank2
 
         private int count = 0;
 
+
         public Bank(int accountAmount)
         {
             accounts = new Account[accountAmount];
@@ -25,11 +26,11 @@ namespace Bank2
 
         public void Add(string username, string password)
         {
-            if(count >= accounts.Length)
+            if (count >= accounts.Length)
             {
                 Account[] tempArray = new Account[accounts.Length * 2];
-                
-                for(int i = 0; i < accounts.Length; i ++)
+
+                for (int i = 0; i < accounts.Length; i++)
                 {
                     tempArray[i] = accounts[i].Copy();
                 }
@@ -37,13 +38,15 @@ namespace Bank2
                 accounts = tempArray;
             }
 
-            accounts[count] = new Account(username,password);
+            accounts[count] = new Account(username, password);
 
             count++;
         }
 
-        public void Remove(int accountPos)
+        public void Remove(string username, string password)
         {
+            int accountPos = Find(username, password);
+
             for (int i = accountPos; i < accounts.Length - 1; i++)
             {
                 accounts[i] = accounts[i + 1];
@@ -51,7 +54,7 @@ namespace Bank2
 
             accounts[accounts.Length - 1] = null;
 
-            if (count <= accounts.Length / 2)
+            if (count + 2 <= accounts.Length / 2)
             {
                 Account[] tempArray = new Account[accounts.Length / 2];
 
@@ -66,7 +69,7 @@ namespace Bank2
             count--;
         }
 
-        public int Find(string username, string password)
+        private int Find(string username, string password)
         {
             for (int i = 0; i < count; i++)
             {
@@ -78,7 +81,7 @@ namespace Bank2
             return -1;
         }
 
-        public int Find(string username)
+        private int Find(string username)
         {
             for (int i = 0; i < count; i++)
             {
@@ -97,14 +100,45 @@ namespace Bank2
             accounts[Find(receiver)].deposit(AmountOfMoney);
         }
 
+        public void withdraw(string username, string password, int amount)
+        {
+            accounts[Find(username, password)].withdraw(username, password, amount);
+        }
+
+        public void deposit(string username, int amount)
+        {
+            accounts[Find(username)].deposit(amount);
+        }
+
         public void PrintAccounts()
         {
-            for (int i = 0; i < count; i ++)
+            for (int i = 0; i < count; i++)
             {
                 accounts[i].Print();
             }
         }
 
+        public bool Login(string username, string password)
+        {
+            //return whether the account exists
 
+
+            int result = Find(username, password);
+
+            if (result == -1)
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
+        public int getBalance(string username, string password)
+        {
+            return accounts[Find(username, password)].balance;
+        }
     }
 }

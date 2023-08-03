@@ -31,59 +31,84 @@
 
                 if (response == "log in")
                 {
-                    while (!LoggedIn)
-                    {
-                        Console.WriteLine("plz enter username.");
+                    Console.WriteLine("plz enter username.");
 
-                        string usernameResponse = Console.ReadLine();
+                    string username = Console.ReadLine();
 
 
-                        Console.WriteLine("plz enter password.");
+                    Console.WriteLine("plz enter password.");
 
-                        string passwordResponse = Console.ReadLine();
+                    string password = Console.ReadLine();
 
 
                     bool result = bank.Login(username, password);
 
-                        if (result == -1)
+                    if (!result)
+                    {
+                        Console.WriteLine("this account doesn't exist. Would you like to make an account?");
+
+                        string response2 = Console.ReadLine();
+
+                        LoggedIn = false;
+
+                        if (response2 == "yes")
                         {
-                            Console.WriteLine("this account doesn't exist. Would you like to make an account?");
+                            response = "create";
 
-                            string response2 = Console.ReadLine();
+                        }
+                    }
+                    else
+                    {
+                        LoggedIn = true;
+                    }
 
-                            LoggedIn = false;
+                    while (LoggedIn)
+                    {
 
-                            if (response2 == "yes")
-                            {
-                                response = "create";
+                        /*
+                         * make sure to specify which account you are reffering to in order to be able to
+                         * deposit, withdraw, or transfer money from that specific account.
+                        */
 
-                                LoggedIn = true;
-                            }
+                        Console.WriteLine("would you like to deposit, withdraw, transfer, view funds, or log out?");
+
+                        response = Console.ReadLine();
+
+                        if (response == "deposit")
+                        {
+                            Console.WriteLine("how much money would you like to deposit?");
+
+                            bank.deposit(username, int.Parse(Console.ReadLine()));
                         }
 
-                        else if (LoggedIn)
+                        if (response == "withdraw")
                         {
+                            Console.WriteLine("how much money would you like to withdraw?");
 
-                            /*
-                             * make sure to specify which account you are reffering to in order to be able to
-                             * deposit, withdraw, or transfer money from that specific account.
-                            */
+                            bank.withdraw(username, password, int.Parse(Console.ReadLine()));
+                        }
 
+                        if (response == "transfer")
+                        {
+                            Console.WriteLine("how much money would you like to transfer?");
 
+                            int amount = int.Parse(Console.ReadLine());
 
+                            Console.WriteLine("who would you like to transfer money to?");
 
-                            Console.WriteLine("would you like to deposit, withdraw, or transfer money?");
+                            string receiver = Console.ReadLine();
 
-                            response = Console.ReadLine();
+                            bank.transfer(username, password, amount, receiver);
+                        }
 
-                            if (response == "deposit")
-                            {
-                                Console.WriteLine("how much money would you like to deposit?");
+                        if (response == "view")
+                        {
+                            Console.WriteLine(bank.getBalance(username, password).ToString());
+                        }
 
-                                int AmountOfMoney = int.Parse(response);
-
-                               // deposit(AmountOfMoney);       (make sure to put the specified account in front of deposit.)
-                            }
+                        if (response == "log out")
+                        {
+                            LoggedIn = false;
                         }
                     }
                 }
@@ -123,15 +148,9 @@
                     string password = Console.ReadLine();
 
 
-                    int result = bank.Find(username,password);
-
-                    if (result == -1)
+                    if (bank.Login(username, password))
                     {
-                        Console.WriteLine("you cannot remove an account that does not exist.");
-                    }
-                    else
-                    {
-                        bank.Remove(result);
+                        bank.Remove(username, password);
                     }
                 }
 
