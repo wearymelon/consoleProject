@@ -95,9 +95,20 @@ namespace Bank2
 
         public void transfer(string username, string password, int AmountOfMoney, string receiver)
         {
-            accounts[Find(username, password)].withdraw(username, password, AmountOfMoney);
 
-            accounts[Find(receiver)].deposit(AmountOfMoney);
+            int theReceiver = Find(receiver);
+
+
+            if (theReceiver == -1)
+            {
+                Console.WriteLine("this account does not exist.");
+            }
+            else
+            {
+                accounts[Find(username, password)].withdraw(username, password, AmountOfMoney);
+
+                accounts[Find(receiver)].deposit(AmountOfMoney);
+            }
         }
 
         public void withdraw(string username, string password, int amount)
