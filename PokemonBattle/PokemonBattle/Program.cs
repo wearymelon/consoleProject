@@ -61,6 +61,8 @@
                         }
 
                         Console.WriteLine($"Great! Your opponent chose {pokemons[randomOpponent]}");
+
+
                     }
                     else if (ConfirmPokemon == ":")
                     {

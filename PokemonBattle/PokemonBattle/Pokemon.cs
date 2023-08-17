@@ -12,6 +12,19 @@ namespace PokemonBattle
         public int AttackDamage;
 
         public int Health;
-        public abstract bool Attack(Pokemon pokemon);
+
+
+        /// <summary>
+        /// Attacking the enemy Pokemon
+        /// </summary>
+        /// <param name="enemy"></param>
+        /// <returns></returns>
+        public abstract bool BaseAttack(Pokemon enemy);
+
+        
+
+
+        public abstract void Update(Pokemon enemy);
+
     }
 }

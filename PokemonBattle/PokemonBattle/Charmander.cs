@@ -15,7 +15,7 @@ namespace PokemonBattle
             AttackDamage = 90;
         }
 
-        public override bool Attack(Pokemon opponent)
+        public override bool BaseAttack(Pokemon opponent)
         {
             opponent.Health = opponent.Health - AttackDamage;
 
