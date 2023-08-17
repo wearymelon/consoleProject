@@ -9,11 +9,7 @@ namespace PokemonBattle
     internal class Charmander : Pokemon
     {
         public Charmander()
-        {
-            Health = 385;
-
-            AttackDamage = 90;
-        }
+            : base(90, 385) { }
 
         public override bool BaseAttack(Pokemon opponent)
         {

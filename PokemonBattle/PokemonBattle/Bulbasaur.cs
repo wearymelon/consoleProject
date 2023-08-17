@@ -12,14 +12,10 @@ namespace PokemonBattle
         //make constructor
 
         public Bulbasaur()
-        {
-            Health = 500;
-
-            AttackDamage = 70;
-        }
+            : base(70, 500) { }
 
 
-         public override bool BaseAttack(Pokemon opponent)
+        public override bool BaseAttack(Pokemon opponent)
          {
             opponent.Health = opponent.Health - AttackDamage;
             

@@ -9,11 +9,7 @@ namespace PokemonBattle
     internal class Squirtle : Pokemon
     {
         public Squirtle()
-        {
-            Health = 460;
-
-            AttackDamage = 80;
-        }
+              : base(80, 460) { }
 
         public override bool BaseAttack(Pokemon opponent)
         {

@@ -9,22 +9,12 @@ namespace PokemonBattle
     internal class Magikarp : Pokemon
     {
         public Magikarp()
+            : base(30, 1000) { }    
+       
+
+        public override bool SpecialAttack()
         {
-            Health = 1000;
 
-            AttackDamage = 30;
-        }
-
-        public override bool BaseAttack(Pokemon opponent)
-        {
-            opponent.Health = opponent.Health - AttackDamage;
-
-            if (opponent.Health <= 0)
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

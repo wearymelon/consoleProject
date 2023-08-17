@@ -10,11 +10,7 @@ namespace PokemonBattle
     {
 
         public Pikachu()
-        {
-            Health = 310;
-
-            AttackDamage = 125;
-        }
+            : base(125, 310) { }
 
         public override bool BaseAttack(Pokemon opponent)
         {
