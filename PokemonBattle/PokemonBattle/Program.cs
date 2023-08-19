@@ -36,6 +36,9 @@
 
             int randomOpponent = random.Next(1, 6);
 
+            int whoGoesFirst = random.Next(1, 3);
+
+
             bool isProgramRunning = true;
 
 
@@ -62,7 +65,7 @@
 
                         Console.WriteLine($"Great! Your opponent chose {pokemons[randomOpponent]}");
 
-
+                        
                     }
                     else if (ConfirmPokemon == ":")
                     {

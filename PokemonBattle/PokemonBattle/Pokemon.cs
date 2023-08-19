@@ -27,7 +27,7 @@ namespace PokemonBattle
         /// <returns></returns>
         public bool BaseAttack(Pokemon enemy)
         {
-            enemy.Health = enemy.Health - AttackDamage;
+            enemy.GetHit(AttackDamage, this);
 
             if (enemy.Health <= 0)
             {
@@ -37,7 +37,7 @@ namespace PokemonBattle
             return false;
         }
 
-        public abstract bool SpecialAttack(Pokemon enemy);
+        public abstract bool SpecialMove(Pokemon enemy);
 
 
         public virtual void AIAttack(Pokemon enemy, Random rand)
@@ -48,7 +48,7 @@ namespace PokemonBattle
             }
             else
             {
-                SpecialAttack(enemy);
+                SpecialMove(enemy);
             }
 
         }

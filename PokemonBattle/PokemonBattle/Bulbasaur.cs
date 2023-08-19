@@ -11,22 +11,39 @@ namespace PokemonBattle
     {
         //make constructor
 
+        int remainingShield = 3;
+        bool isShieldActive = false;
+
         public Bulbasaur()
             : base(70, 500) { }
 
 
-        public override bool BaseAttack(Pokemon opponent)
-         {
-            opponent.Health = opponent.Health - AttackDamage;
-            
-            if (opponent.Health <= 0)
-            {
-                return true;
-            }
+        public override bool SpecialMove(Pokemon enemy)
+        {
+            remainingShield++;
 
             return false;
-         }
+        }
 
+
+        public override void GetHit(int damage, Pokemon enemy)
+        {
+            if (remainingShield >= 1)
+            {
+                Health -= damage / 2;
+
+                remainingShield--;
+            }
+            else
+            {
+                Health -= damage;
+            }
+
+
+        }
+
+
+        //////// MAKE UPDATE FUNCTION NEXT TIME YES YES EYS YES YES
 
     }
 }
