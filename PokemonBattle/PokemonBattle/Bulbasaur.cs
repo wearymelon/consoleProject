@@ -18,11 +18,9 @@ namespace PokemonBattle
             : base(70, 500) { }
 
 
-        public override bool SpecialMove(Pokemon enemy)
+        public override void SpecialMove(Pokemon enemy)
         {
             remainingShield++;
-
-            return false;
         }
 
 
@@ -38,8 +36,15 @@ namespace PokemonBattle
             {
                 Health -= damage;
             }
+        }
 
 
+        public override void Update(Pokemon enemy)
+        {
+            if (remainingShield == 0)
+            {
+                remainingShield += Random.Shared.Next(3) / 2;
+            }
         }
 
 

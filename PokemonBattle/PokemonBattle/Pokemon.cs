@@ -18,11 +18,24 @@ namespace PokemonBattle
 
         public int Health;
 
-        //public bool Stunned;
+        public bool IsStunned;
+
 
         /// <summary>
         /// Attacking the enemy Pokemon
-        /// </summary>
+        /// </summary
+        /// 
+      /* "I did not pikachoose this"
+       * `;-.          ___,
+          `.`\_...._/`.-"`
+            \        /      ,
+            / .  .   \    .' `-._
+           |)  .    ()\  /   _.'
+           \  -'-     ,; '. <
+           / ,    / ,  |.-'.-'
+          (_/    (_/ ,;|.<`
+            (_,-'`> .'
+    */
         /// <param name="enemy">the enemy</param>
         /// <returns></returns>
         public bool BaseAttack(Pokemon enemy)
@@ -37,7 +50,7 @@ namespace PokemonBattle
             return false;
         }
 
-        public abstract bool SpecialMove(Pokemon enemy);
+        public abstract void SpecialMove(Pokemon enemy);
 
 
         public virtual void AIAttack(Pokemon enemy, Random rand)
@@ -67,5 +80,6 @@ namespace PokemonBattle
         public abstract void GetHit(int damage, Pokemon enemy);
 
 
+      
     }
 }

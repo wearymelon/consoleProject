@@ -15,11 +15,10 @@ namespace PokemonBattle
         public Magikarp()
             : base(30, 1000) { }    
 
-        public override bool SpecialMove(Pokemon enemy)
+        public override void SpecialMove(Pokemon enemy)
         {
             healCount = 0;
             isDodging = true;
-            return false;
         }
 
         public override void GetHit(int damage, Pokemon enemy)
@@ -41,6 +40,8 @@ namespace PokemonBattle
                 healCount++;
             }
         }
+
+
 
     }
 }

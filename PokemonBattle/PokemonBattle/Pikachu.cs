@@ -8,20 +8,27 @@ namespace PokemonBattle
 {
     internal class Pikachu : Pokemon
     {
-
+        int quickCount = 2;
         public Pikachu()
             : base(125, 310) { }
 
-        public override bool BaseAttack(Pokemon opponent)
+        public override void SpecialMove(Pokemon enemy)
         {
-            opponent.Health = opponent.Health - AttackDamage;
+            enemy.IsStunned = true;
 
-            if (opponent.Health <= 0)
-            {
-                return true;
-            }
+            quickCount = 0;
 
-            return false;
+            enemy.GetHit(95, enemy);
+        }
+
+        public override void GetHit(int damage, Pokemon enemy)
+        {
+            Health -= damage;
+        }
+
+        public override void Update(Pokemon enemy)
+        {
+            
         }
 
     }
