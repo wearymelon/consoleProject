@@ -8,19 +8,18 @@ namespace PokemonBattle
 {
     internal class Charmander : Pokemon
     {
+        int flameCounter = 0;
+
+        bool isFlameBurning;
+
         public Charmander()
             : base(90, 385) { }
 
-        public override bool BaseAttack(Pokemon opponent)
+        public override void SpecialMove(Pokemon enemy)
         {
-            opponent.Health = opponent.Health - AttackDamage;
+            flameCounter = 2;
 
-            if (opponent.Health <= 0)
-            {
-                return true;
-            }
-
-            return false;
+            isFlameBurning = true;
         }
     }
 }
