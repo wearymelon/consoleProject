@@ -13,7 +13,7 @@ namespace PokemonBattle
         int squirtCount = 3;
         bool isSquirtActive = false;
         public Squirtle()
-              : base(80, 460) { }
+              : base(80, 460, "Squirtle") { }
 
         public override void SpecialMove(Pokemon enemy)
         {
@@ -47,6 +47,11 @@ namespace PokemonBattle
 
             squirtCount++;
 
+        }
+
+        public override string Print()
+        {
+            return "Squirtle";
         }
     }
 }

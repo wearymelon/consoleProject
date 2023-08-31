@@ -9,8 +9,11 @@ namespace PokemonBattle
     internal class Pikachu : Pokemon
     {
         int quickCount = 2;
+
+        int stunDamage = 40;
+
         public Pikachu()
-            : base(125, 310) { }
+            : base(125, 310, "Pikachu") { }
 
         public override void SpecialMove(Pokemon enemy)
         {
@@ -28,8 +31,19 @@ namespace PokemonBattle
 
         public override void Update(Pokemon enemy)
         {
-            
+            if (quickCount < 2 && enemy.IsStunned == true)
+            {
+                enemy.Health = enemy.Health - stunDamage;
+
+                Console.WriteLine("you have been damaged due to pikachu's stun damage.");
+            }
+
+            quickCount++;
         }
 
+        public override string Print()
+        {
+            return "Pikachu";
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace PokemonBattle
         int healCount = 2;
 
         public Magikarp()
-            : base(30, 1000) { }    
+            : base(30, 1000, "Magikarp") { }    
 
         public override void SpecialMove(Pokemon enemy)
         {
@@ -37,11 +37,15 @@ namespace PokemonBattle
             {
                 Health += 10;
 
-                healCount++;
+                Console.WriteLine("this mediocre fish has healed. Do we really care?");
             }
+
+            healCount++;
         }
 
-
-
+        public override string Print()
+        {
+            return "Magikarp";
+        }
     }
 }

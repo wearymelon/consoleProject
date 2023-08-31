@@ -8,7 +8,7 @@ namespace PokemonBattle
 {
     public abstract class Pokemon
     {
-        public Pokemon(int damage, int health)
+        public Pokemon(int damage, int health, string pokemonName)
         {
             AttackDamage = damage;
             Health = health;
@@ -19,6 +19,8 @@ namespace PokemonBattle
         public int Health;
 
         public bool IsStunned;
+
+        public string PokemonName;
 
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace PokemonBattle
         /// <param name="enemy">the enemy damaging you</param>
         public abstract void GetHit(int damage, Pokemon enemy);
 
-
+        public abstract string Print();
       
     }
 }

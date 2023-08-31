@@ -15,7 +15,7 @@ namespace PokemonBattle
         bool isShieldActive = false;
 
         public Bulbasaur()
-            : base(70, 500) { }
+            : base(70, 500, "Bulbasaur") { }
 
 
         public override void SpecialMove(Pokemon enemy)
@@ -44,11 +44,14 @@ namespace PokemonBattle
             if (remainingShield == 0)
             {
                 remainingShield += Random.Shared.Next(3) / 2;
+
+                Console.WriteLine("Did he get the extra shield??? Find out next time on dragon ba- nah I'm kidding he prolly got it.");
             }
         }
 
-
-        //////// MAKE UPDATE FUNCTION NEXT TIME YES YES EYS YES YES
-
+        public override string Print()
+        {
+            return "Bulbasaur";
+        }
     }
 }

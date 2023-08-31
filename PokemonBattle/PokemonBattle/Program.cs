@@ -10,62 +10,56 @@
 
         static void Main(string[] args)
         {
-            //Pokemon[] pokemons = new Pokemon[5];
 
-            //Pokemon[] pokemons = new Pokemon[]
-            //{
-            //    new Bulbasaur(),
-            //    new Pikachu(),
-            //    new Charmander(),
-            //    new Squirtle(),
-            //    new Magikarp()
-            //};
-
-            string[] pokemons = new string[]
-            {
-                "Bulbasaur",
-                "Pikachu",
-                "Charmander",
-                "Squirtle",
-                "Magikarp"
+            Pokemon[] pokemons = new Pokemon[]
+            { 
+                new Bulbasaur(),
+                new Pikachu(),
+                new Charmander(),
+                new Squirtle(),
+                new Magikarp(),
+                new NathanDrake()
             };
 
 
 
             Random random = new Random();
 
-            int randomOpponent = random.Next(1, 6);
-
-            int whoGoesFirst = random.Next(1, 3);
-
+            Pokemon opponent;
 
             bool isProgramRunning = true;
 
 
             while (isProgramRunning)
             {
-                Console.WriteLine("Welcome to Pokemon battle! Choose your pokemon. \n Pikachu (Press 1) \n Bulbasaur (Press 2) \n Charmander (Press 3) \n Squirtle (Press 4) \n Magikarp (Press 5)");
+                Console.WriteLine("press ~ to start the game");
 
-                string PokemonChosen = Console.ReadLine();
+                string startGame = Console.ReadLine();
 
-                if (PokemonChosen == "1")
-                { 
+                if (startGame == "~")
+                {
+                    Console.WriteLine("Welcome to Pokemon battle! Choose your pokemon. \n Pikachu (Press 1) \n Bulbasaur (Press 2) \n Charmander (Press 3) \n Squirtle (Press 4) \n Magikarp (Press 5) \n Nathan Drake (Press 6)");
+
+                    string PokemonChosen = Console.ReadLine();
+
+                    int MyPokemon = int.Parse(PokemonChosen);
+
                     Console.WriteLine("press ' to confirm this pokemon. If you dont want this pokemon, press :");
 
                     string ConfirmPokemon = Console.ReadLine();
 
                     if (ConfirmPokemon == "'")
                     {
-                        int MyPokemon = int.Parse(PokemonChosen);
+                        opponent = pokemons[random.Next(0, pokemons.Length)];
 
-                        if (randomOpponent == MyPokemon)
-                        {
-                            randomOpponent = random.Next(1, 6);
-                        }
+                        Console.WriteLine($"Great! Your opponent chose {opponent.Print()}");
 
-                        Console.WriteLine($"Great! Your opponent chose {pokemons[randomOpponent]}");
 
-                        
+                        //
+
+                        Console.WriteLine("Would you like to do a basic attack or a special move?");
+
+
                     }
                     else if (ConfirmPokemon == ":")
                     {
