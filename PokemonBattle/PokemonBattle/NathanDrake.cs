@@ -8,26 +8,37 @@ namespace PokemonBattle
 {
     internal class NathanDrake : Pokemon
     {
-        int ammoAmount = 0;
 
         int dodgeRecoveryAmount = 35;
 
         public NathanDrake()
-           : base(20, 800, "Nathan Drake") { }
+           : base(1, 20, 800, "Nathan Drake") { }
 
-        public override void SpecialMove(Pokemon enemy)
+        public override bool SpecialMove(Pokemon enemy)
         {
-            for (int i = 0; i < ammoAmount; i++)
+            if (SpecialCount >= SpecialNeed)
             {
-
-
-                if (Random.Shared.Next(1, 101) <= 43)
+                for (int i = 0; i < SpecialCount; i++)
                 {
-                    enemy.GetHit(50, enemy);
+
+                    if (Random.Shared.Next(1, 101) <= 43)
+                    {
+                        enemy.GetHit(50, enemy);
+                    }
                 }
+
+                return true;
             }
 
-            ammoAmount = 0;
+            else
+            {
+                Console.WriteLine("insufficient amount of turns played since last special move.");
+
+                return false;
+            }
+
+
+            SpecialCount = 0;
         }
 
         public override void GetHit(int damage, Pokemon enemy)
@@ -64,7 +75,7 @@ namespace PokemonBattle
         {
             if (Random.Shared.Next(10) == 1)
             {
-                ammoAmount = 7;
+                SpecialCount = 7;
 
                 Console.WriteLine("Nathan Drake found a full new mag out of nowhere! He can now brutally kill the small animal facing him!");
             }
@@ -83,8 +94,10 @@ namespace PokemonBattle
                 Console.WriteLine("Nathan Drake has found a healing totem randomly in his pocket! He now has gained more health than he originally had before this battle! 1000!");
             }
 
-
-            ammoAmount++;
+            if (SpecialCount < 7)
+            {
+                SpecialCount++;
+            }
         }
 
         public override string Print()

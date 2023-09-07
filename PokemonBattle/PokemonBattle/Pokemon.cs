@@ -8,11 +8,17 @@ namespace PokemonBattle
 {
     public abstract class Pokemon
     {
-        public Pokemon(int damage, int health, string pokemonName)
+        public Pokemon(int specialCount, int damage, int health, string pokemonName)
         {
+            SpecialNeed = specialCount;
+            SpecialCount = specialCount;
             AttackDamage = damage;
             Health = health;
         }
+
+        public int SpecialNeed; 
+
+        public int SpecialCount;
 
         public int AttackDamage;
 
@@ -52,7 +58,7 @@ namespace PokemonBattle
             return false;
         }
 
-        public abstract void SpecialMove(Pokemon enemy);
+        public abstract bool SpecialMove(Pokemon enemy);
 
 
         public virtual void AIAttack(Pokemon enemy, Random rand)

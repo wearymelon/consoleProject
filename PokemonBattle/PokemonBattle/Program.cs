@@ -42,7 +42,7 @@
 
                     string PokemonChosen = Console.ReadLine();
 
-                    int MyPokemon = int.Parse(PokemonChosen);
+                    int MyPokemon = int.Parse(PokemonChosen) - 1;
 
                     Console.WriteLine("press ' to confirm this pokemon. If you dont want this pokemon, press :");
 
@@ -57,13 +57,45 @@
 
                         //
 
-                        Console.WriteLine("Would you like to do a basic attack or a special move?");
+                        while (pokemons[MyPokemon].Health > 0  && opponent.Health > 0)
+                        {
+                            Console.WriteLine("Would you like to do a basic attack or a special move?");
 
+                            string attackChoice = Console.ReadLine();
+
+                            if (attackChoice == "normal")
+                            {
+                                pokemons[MyPokemon].BaseAttack(opponent);
+                            }
+
+                            else if (attackChoice == "special")
+                            {
+                                pokemons[MyPokemon].SpecialMove(opponent);
+                            }
+
+                            if (pokemons[MyPokemon].Health <= 0 || opponent.Health <= 0)
+                            {
+                                continue;
+                            }
+
+
+                            if (Random.Shared.Next(2) == 1 && opponent.SpecialCount >= opponent.SpecialNeed)
+                            {
+                                opponent.SpecialMove(pokemons[MyPokemon]);
+                            }
+
+                            else
+                            {
+                                opponent.BaseAttack(pokemons[MyPokemon]);
+                            }
+                        }
+
+                       
 
                     }
                     else if (ConfirmPokemon == ":")
                     {
-
+                        ;
                     }
                 }
             }

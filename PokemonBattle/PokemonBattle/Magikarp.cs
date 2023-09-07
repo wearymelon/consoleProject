@@ -8,17 +8,31 @@ namespace PokemonBattle
 {
     internal class Magikarp : Pokemon
     {
-        bool isDodging = false;
-
-        int healCount = 2;
+        public bool isDodging = false;
 
         public Magikarp()
-            : base(30, 1000, "Magikarp") { }    
+            : base(2, 30, 1000, "Magikarp") { }    
 
-        public override void SpecialMove(Pokemon enemy)
+        public override bool SpecialMove(Pokemon enemy)
         {
-            healCount = 0;
-            isDodging = true;
+            if (SpecialCount == SpecialNeed)
+            {
+                SpecialCount = 0;
+                isDodging = true;
+
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("insufficient amount of turns played since last special move.");
+
+                return false;
+            }
+
+            
+            //if you can do your special attack, do it and return true
+            //if you can't, print why and return false.
+            //do this for all pokemon
         }
 
         public override void GetHit(int damage, Pokemon enemy)
@@ -33,14 +47,16 @@ namespace PokemonBattle
 
         public override void Update(Pokemon enemy)
         {
-            if (healCount < 2)
+            if (SpecialCount < SpecialNeed)
             {
                 Health += 10;
 
                 Console.WriteLine("this mediocre fish has healed. Do we really care?");
             }
-
-            healCount++;
+            if (SpecialCount < SpecialNeed)
+            {
+                SpecialCount++;
+            }
         }
 
         public override string Print()

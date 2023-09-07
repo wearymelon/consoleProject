@@ -10,15 +10,27 @@ namespace PokemonBattle
     {
         int originalEnemyAttack = -1;
 
-        int squirtCount = 3;
         bool isSquirtActive = false;
         public Squirtle()
-              : base(80, 460, "Squirtle") { }
+              : base(3, 80, 460, "Squirtle") { }
 
-        public override void SpecialMove(Pokemon enemy)
+        public override bool SpecialMove(Pokemon enemy)
         {
-            squirtCount = 0;
-            isSquirtActive = true;
+
+            if (SpecialCount == SpecialNeed)
+            {
+                SpecialCount = 0;
+                isSquirtActive = true;
+
+                return true;
+            }
+
+            else
+            {
+                Console.WriteLine("insufficient amount of turns played since last special move.");
+
+                return false;
+            }
         }
 
         public override void GetHit(int damage, Pokemon enemy)
@@ -29,7 +41,7 @@ namespace PokemonBattle
         public override void Update(Pokemon enemy)
         {
 
-            if (squirtCount < 2)
+            if (SpecialCount < 2)
             {
                 if (originalEnemyAttack == -1)
                 {
@@ -45,8 +57,10 @@ namespace PokemonBattle
                 enemy.AttackDamage = originalEnemyAttack;
             }
 
-            squirtCount++;
-
+            if (SpecialCount < SpecialNeed)
+            {
+                SpecialCount++;
+            }
         }
 
         public override string Print()

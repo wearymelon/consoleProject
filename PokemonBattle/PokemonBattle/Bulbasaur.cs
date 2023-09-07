@@ -11,26 +11,38 @@ namespace PokemonBattle
     {
         //make constructor
 
-        int remainingShield = 3;
         bool isShieldActive = false;
 
         public Bulbasaur()
-            : base(70, 500, "Bulbasaur") { }
+            : base(3, 70, 500, "Bulbasaur") { }
+        
 
-
-        public override void SpecialMove(Pokemon enemy)
+        public override bool SpecialMove(Pokemon enemy)
         {
-            remainingShield++;
+
+            if (SpecialCount == SpecialNeed)
+            {
+                SpecialCount++;
+
+                return true;
+            }
+
+            else
+            {
+                Console.WriteLine("insufficient amount of turns played since last special move.");
+
+                return false;
+            }
         }
 
 
         public override void GetHit(int damage, Pokemon enemy)
         {
-            if (remainingShield >= 1)
+            if (SpecialCount >= 1)
             {
                 Health -= damage / 2;
 
-                remainingShield--;
+                SpecialCount++;
             }
             else
             {
@@ -41,9 +53,9 @@ namespace PokemonBattle
 
         public override void Update(Pokemon enemy)
         {
-            if (remainingShield == 0)
+            if (SpecialCount == 0)
             {
-                remainingShield += Random.Shared.Next(3) / 2;
+                SpecialCount += Random.Shared.Next(3) / 2;
 
                 Console.WriteLine("Did he get the extra shield??? Find out next time on dragon ba- nah I'm kidding he prolly got it.");
             }

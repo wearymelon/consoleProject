@@ -8,20 +8,32 @@ namespace PokemonBattle
 {
     internal class Charmander : Pokemon
     {
-        int flameCounter = 0;
 
         int flameDamage = 45;
 
         bool isFlameBurning;
 
         public Charmander()
-            : base(90, 385, "Charmander") { }
+            : base(2, 90, 385, "Charmander") { }
 
-        public override void SpecialMove(Pokemon enemy)
+        public override bool SpecialMove(Pokemon enemy)
         {
-            flameCounter = 2;
 
-            isFlameBurning = true;
+            if (SpecialCount == SpecialNeed)
+            {
+                SpecialCount = 0;
+
+                isFlameBurning = true;
+
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("insufficient amount of turns played since last special move.");
+
+                return false;
+            }
+            
         }
 
         public override void GetHit(int damage, Pokemon enemy)
@@ -38,7 +50,7 @@ namespace PokemonBattle
 
         public override void Update(Pokemon enemy)
         {
-            if (flameCounter > 0)
+            if (SpecialCount > 0)
             {
                 enemy.Health -= flameDamage;
 
@@ -49,11 +61,11 @@ namespace PokemonBattle
                 isFlameBurning = false;
             }
 
-            flameCounter--;
+            SpecialCount--;
 
             if (Random.Shared.Next(4) == 1)
             {
-                flameCounter++;
+                SpecialCount++;
 
                 isFlameBurning = true;
             }
