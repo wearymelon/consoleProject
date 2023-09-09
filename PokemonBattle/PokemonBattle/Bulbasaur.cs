@@ -36,17 +36,28 @@ namespace PokemonBattle
         }
 
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
         {
             if (SpecialCount >= 1)
             {
                 Health -= damage / 2;
 
                 SpecialCount++;
+
+                Console.WriteLine($"Bulbasaur as taken half the damage of your attack! He is now at {Health} health.");
             }
             else
             {
                 Health -= damage;
+
+                if (isPlayer == true)
+                {
+                    Console.WriteLine($"you have been damaged! You are now at {Health} health.");
+                }
+                else
+                {
+                    Console.WriteLine($"you have damaged Bulbasaur! He is now at {Health} health.");
+                }
             }
         }
 

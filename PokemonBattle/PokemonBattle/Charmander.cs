@@ -36,15 +36,27 @@ namespace PokemonBattle
             
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
         {
             if (Random.Shared.Next(10) == 1)
             {
                 Health = Health + 30;
+
+                Console.WriteLine($"Charmander has gotten lucky and taken no damage and has healed for 30 health! He is now at {Health} health.");
             }
             else
             {
                 Health -= damage;
+
+                if (isPlayer == true)
+                {
+                    Console.WriteLine($"you have been damaged! You are now at {Health} health.");
+                }
+                else
+                {
+                    Console.WriteLine($"you have damaged Charmander! He is now at {Health} health.");
+                }
+                
             }
         }
 

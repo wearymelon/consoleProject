@@ -41,7 +41,7 @@ namespace PokemonBattle
             SpecialCount = 0;
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
         {
             if (Random.Shared.Next(7) == 1)
             {
@@ -53,7 +53,7 @@ namespace PokemonBattle
                 {
                     Health -= damage * 2;
 
-                    Console.WriteLine("Flynn has hit me harder, but that wasn't half bad.");
+                    Console.WriteLine($"You hit Nate with a very rough punch and he has taken double the damage. He is now at {Health} health.");
                 }
                 else
                 {
@@ -61,11 +61,22 @@ namespace PokemonBattle
                     {
                         Health = 0;
 
-                        Console.WriteLine("You did it! You killed the most powerful man on the roster. Congrats!");
+                        Console.WriteLine("You did it! You killed the most powerful man on the roster by chance. Congrats!");
                     }
                     else
                     {
                         Health -= damage;
+
+                        if (isPlayer == true)
+                        {
+                            Console.WriteLine($"you have been damaged! You are now at {Health} health.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"you have damaged Nathan Drake! He is now at {Health} health.");
+                        }
+
+                        
                     }
                 }
             }

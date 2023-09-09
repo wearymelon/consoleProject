@@ -37,9 +37,20 @@ namespace PokemonBattle
            
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
         {
             Health -= damage;
+
+
+            if (isPlayer == true)
+            {
+                Console.WriteLine($"you have been damaged! You are now at {Health} health.");
+            }
+            else
+            {
+                Console.WriteLine($"you have damaged Pikachu! He is now at {Health} health.");
+            }
+           
         }
 
         public override void Update(Pokemon enemy)

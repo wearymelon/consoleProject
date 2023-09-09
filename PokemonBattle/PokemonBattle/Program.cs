@@ -30,6 +30,11 @@
             bool isProgramRunning = true;
 
 
+            //REMOVE WRITELINES FROM INDIVIDUAL CLASSES AND MAKE A BOOLEAN THAT CHECKS IF YOU GOT HIT INSTEAD
+            //THEN YOU WOULD USE THAT BOOLEAN IN THE ABSTRACT POKEMON CLASS IN ORDER TO BE ABLE TO TELL IF
+            //IT IS YOUR POKEMON IN THE MAIN PROGRAM WHILE RUNNING THE GAME
+
+
             while (isProgramRunning)
             {
                 Console.WriteLine("press ~ to start the game");
@@ -63,7 +68,7 @@
 
                             string attackChoice = Console.ReadLine();
 
-                            if (attackChoice == "normal")
+                            if (attackChoice == "base")
                             {
                                 pokemons[MyPokemon].BaseAttack(opponent);
                             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,11 +36,21 @@ namespace PokemonBattle
             //do this for all pokemon
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
         {
             if (!isDodging)
             {
                 Health -= damage;
+
+                if (isPlayer == true)
+                {
+                    Console.WriteLine($"you have been damaged! You are now at {Health} health.");
+
+                }
+                else
+                {
+                    Console.WriteLine($"you have damaged Magikarp! He is now at {Health} health.");
+                }
             }
 
             isDodging = false;
