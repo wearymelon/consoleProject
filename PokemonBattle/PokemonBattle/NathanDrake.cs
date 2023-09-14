@@ -41,7 +41,7 @@ namespace PokemonBattle
             SpecialCount = 0;
         }
 
-        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
+        public override void GetHit(int damage, Pokemon enemy)
         {
             if (Random.Shared.Next(7) == 1)
             {

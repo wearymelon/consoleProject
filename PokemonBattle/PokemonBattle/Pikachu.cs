@@ -37,7 +37,7 @@ namespace PokemonBattle
            
         }
 
-        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
+        public override void GetHit(int damage, Pokemon enemy)
         {
             Health -= damage;
 

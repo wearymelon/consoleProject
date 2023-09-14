@@ -92,7 +92,7 @@ namespace PokemonBattle
         /// </summary>
         /// <param name="damage">how much the enemy attemps to damage you by</param>
         /// <param name="enemy">the enemy damaging you</param>
-        public abstract void GetHit(int damage, Pokemon enemy);
+        public abstract bool GetHit(int damage, Pokemon enemy);
 
         public abstract string Print();
       

@@ -13,6 +13,8 @@ namespace PokemonBattle
 
         bool isFlameBurning;
 
+
+
         public Charmander()
             : base(2, 90, 385, "Charmander") { }
 
@@ -36,7 +38,7 @@ namespace PokemonBattle
             
         }
 
-        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
+        public override void GetHit(int damage, Pokemon enemy)
         {
             if (Random.Shared.Next(10) == 1)
             {

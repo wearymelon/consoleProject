@@ -71,6 +71,11 @@
                             if (attackChoice == "base")
                             {
                                 pokemons[MyPokemon].BaseAttack(opponent);
+
+                                if (pokemons[MyPokemon].GetHit(opponent.AttackDamage, opponent))
+                                {
+                                    Console.WriteLine($"{pokemons[MyPokemon]} has taken damage! They are now at {pokemons[MyPokemon].Health} health.");
+                                }
                             }
 
                             else if (attackChoice == "special")

@@ -36,7 +36,7 @@ namespace PokemonBattle
         }
 
 
-        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
+        public override void GetHit(int damage, Pokemon enemy)
         {
             if (SpecialCount >= 1)
             {

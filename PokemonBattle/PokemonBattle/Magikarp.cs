@@ -36,7 +36,7 @@ namespace PokemonBattle
             //do this for all pokemon
         }
 
-        public override void GetHit(int damage, Pokemon enemy, bool isPlayer)
+        public override void GetHit(int damage, Pokemon enemy)
         {
             if (!isDodging)
             {
