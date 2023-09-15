@@ -29,36 +29,25 @@ namespace PokemonBattle
 
             else
             {
-                Console.WriteLine("insufficient amount of turns played since last special move.");
-
                 return false;
             }
         }
 
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage, Pokemon enemy)
         {
             if (SpecialCount >= 1)
             {
                 Health -= damage / 2;
 
                 SpecialCount++;
-
-                Console.WriteLine($"Bulbasaur as taken half the damage of your attack! He is now at {Health} health.");
             }
             else
             {
                 Health -= damage;
-
-                if (isPlayer == true)
-                {
-                    Console.WriteLine($"you have been damaged! You are now at {Health} health.");
-                }
-                else
-                {
-                    Console.WriteLine($"you have damaged Bulbasaur! He is now at {Health} health.");
-                }
             }
+
+            return true;
         }
 
 
@@ -67,8 +56,6 @@ namespace PokemonBattle
             if (SpecialCount == 0)
             {
                 SpecialCount += Random.Shared.Next(3) / 2;
-
-                Console.WriteLine("Did he get the extra shield??? Find out next time on dragon ba- nah I'm kidding he prolly got it.");
             }
         }
 

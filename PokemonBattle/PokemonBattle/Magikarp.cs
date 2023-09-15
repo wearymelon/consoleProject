@@ -25,8 +25,6 @@ namespace PokemonBattle
             }
             else
             {
-                Console.WriteLine("insufficient amount of turns played since last special move.");
-
                 return false;
             }
 
@@ -36,24 +34,22 @@ namespace PokemonBattle
             //do this for all pokemon
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage, Pokemon enemy)
         {
+            
             if (!isDodging)
             {
                 Health -= damage;
 
-                if (isPlayer == true)
-                {
-                    Console.WriteLine($"you have been damaged! You are now at {Health} health.");
+                return true;
+            }
+            else
+            {
+                isDodging = false;
 
-                }
-                else
-                {
-                    Console.WriteLine($"you have damaged Magikarp! He is now at {Health} health.");
-                }
+                return false;
             }
 
-            isDodging = false;
         }
 
         public override void Update(Pokemon enemy)
@@ -61,8 +57,6 @@ namespace PokemonBattle
             if (SpecialCount < SpecialNeed)
             {
                 Health += 10;
-
-                Console.WriteLine("this mediocre fish has healed. Do we really care?");
             }
             if (SpecialCount < SpecialNeed)
             {

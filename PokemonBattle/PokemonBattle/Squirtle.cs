@@ -27,25 +27,15 @@ namespace PokemonBattle
 
             else
             {
-                Console.WriteLine("insufficient amount of turns played since last special move.");
-
                 return false;
             }
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage, Pokemon enemy)
         {
             Health -= damage;
 
-            if (isPlayer == true)
-            {
-                Console.WriteLine($"you have been damaged! You are now at {Health} health.");
-            }
-            else
-            {
-                Console.WriteLine($"you have damaged Squirtle! He is now at {Health} health.");    
-            }
-            
+            return true;
         }
 
         public override void Update(Pokemon enemy)
@@ -58,9 +48,6 @@ namespace PokemonBattle
                     originalEnemyAttack = enemy.AttackDamage;
                 }
                 enemy.AttackDamage = originalEnemyAttack * 85 / 100;
-
-
-                Console.WriteLine("Squirtle has now reduced the opponents attack damage by 15% for 2 turns. Deal with it!");
             }
             else
             {

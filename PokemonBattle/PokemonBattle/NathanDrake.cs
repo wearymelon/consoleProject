@@ -32,8 +32,6 @@ namespace PokemonBattle
 
             else
             {
-                Console.WriteLine("insufficient amount of turns played since last special move.");
-
                 return false;
             }
 
@@ -41,44 +39,36 @@ namespace PokemonBattle
             SpecialCount = 0;
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage, Pokemon enemy)
         {
             if (Random.Shared.Next(7) == 1)
             {
                 Health += dodgeRecoveryAmount;
+
+                return false;
             }
             else
             {
                 if (Random.Shared.Next(15) == 1)
                 {
                     Health -= damage * 2;
-
-                    Console.WriteLine($"You hit Nate with a very rough punch and he has taken double the damage. He is now at {Health} health.");
                 }
                 else
                 {
                     if (Random.Shared.Next(75) == 1)
                     {
                         Health = 0;
-
-                        Console.WriteLine("You did it! You killed the most powerful man on the roster by chance. Congrats!");
                     }
                     else
                     {
                         Health -= damage;
 
-                        if (isPlayer == true)
-                        {
-                            Console.WriteLine($"you have been damaged! You are now at {Health} health.");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"you have damaged Nathan Drake! He is now at {Health} health.");
-                        }
-
+                        
                         
                     }
                 }
+
+                return true;
             }
         }
 
@@ -87,23 +77,17 @@ namespace PokemonBattle
             if (Random.Shared.Next(10) == 1)
             {
                 SpecialCount = 7;
-
-                Console.WriteLine("Nathan Drake found a full new mag out of nowhere! He can now brutally kill the small animal facing him!");
             }
 
             if (Random.Shared.Next(20) == 1)
             {
                 this.AttackDamage = this.AttackDamage * 2;
-
-                Console.WriteLine("Nathan Drake has found armor piercing rounds, so now his bullets do double damage!");
             }
 
             if (Random.Shared.Next(50) == 1)
             {
                 Health = Health + 1000;
-
-                Console.WriteLine("Nathan Drake has found a healing totem randomly in his pocket! He now has gained more health than he originally had before this battle! 1000!");
-            }
+            }   
 
             if (SpecialCount < 7)
             {

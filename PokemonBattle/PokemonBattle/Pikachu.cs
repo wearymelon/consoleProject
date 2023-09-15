@@ -29,7 +29,7 @@ namespace PokemonBattle
 
             else
             {
-                Console.WriteLine("insufficient amount of turns played since last special move.");
+                
 
                 return false;
             }
@@ -37,19 +37,11 @@ namespace PokemonBattle
            
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage, Pokemon enemy)
         {
             Health -= damage;
 
-
-            if (isPlayer == true)
-            {
-                Console.WriteLine($"you have been damaged! You are now at {Health} health.");
-            }
-            else
-            {
-                Console.WriteLine($"you have damaged Pikachu! He is now at {Health} health.");
-            }
+            return true;
            
         }
 
@@ -58,8 +50,6 @@ namespace PokemonBattle
             if (SpecialCount < SpecialNeed && enemy.IsStunned == true)
             {
                 enemy.Health = enemy.Health - stunDamage;
-
-                Console.WriteLine("you have been damaged due to pikachu's stun damage.");
             }
 
             if (SpecialCount < SpecialNeed)

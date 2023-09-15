@@ -31,34 +31,24 @@ namespace PokemonBattle
             }
             else
             {
-                Console.WriteLine("insufficient amount of turns played since last special move.");
-
                 return false;
             }
             
         }
 
-        public override void GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage, Pokemon enemy)
         {
             if (Random.Shared.Next(10) == 1)
             {
                 Health = Health + 30;
 
-                Console.WriteLine($"Charmander has gotten lucky and taken no damage and has healed for 30 health! He is now at {Health} health.");
+                return false;
             }
             else
             {
                 Health -= damage;
 
-                if (isPlayer == true)
-                {
-                    Console.WriteLine($"you have been damaged! You are now at {Health} health.");
-                }
-                else
-                {
-                    Console.WriteLine($"you have damaged Charmander! He is now at {Health} health.");
-                }
-                
+                return true;
             }
         }
 
@@ -68,7 +58,7 @@ namespace PokemonBattle
             {
                 enemy.Health -= flameDamage;
 
-                Console.WriteLine("Imagine burning. Couldn't be me.");
+                
             }
             else
             {
