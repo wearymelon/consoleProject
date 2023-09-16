@@ -23,7 +23,7 @@ namespace PokemonBattle
 
                     if (Random.Shared.Next(1, 101) <= 43)
                     {
-                        enemy.GetHit(50, enemy);
+                        enemy.GetHit(50);
                     }
                 }
 
@@ -39,7 +39,7 @@ namespace PokemonBattle
             SpecialCount = 0;
         }
 
-        public override bool GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage)
         {
             if (Random.Shared.Next(7) == 1)
             {

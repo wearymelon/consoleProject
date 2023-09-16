@@ -36,7 +36,7 @@ namespace PokemonBattle
             
         }
 
-        public override bool GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage)
         {
             if (Random.Shared.Next(10) == 1)
             {

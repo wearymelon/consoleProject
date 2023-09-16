@@ -22,7 +22,7 @@ namespace PokemonBattle
 
                 SpecialCount = 0;
 
-                enemy.GetHit(95, enemy);
+                enemy.GetHit(95);
 
                 return true;
             }
@@ -37,7 +37,7 @@ namespace PokemonBattle
            
         }
 
-        public override bool GetHit(int damage, Pokemon enemy)
+        public override bool GetHit(int damage)
         {
             Health -= damage;
 
