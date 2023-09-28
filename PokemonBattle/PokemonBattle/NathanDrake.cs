@@ -12,8 +12,10 @@ namespace PokemonBattle
         int dodgeRecoveryAmount = 35;
 
         public NathanDrake()
-           : base(1, 20, 800, "Nathan Drake") { }
+           : base(7, 1, 20, 800, "Nathan Drake") { }
 
+
+        
         public override bool SpecialMove(Pokemon enemy)
         {
             if (SpecialCount >= SpecialNeed)
@@ -25,6 +27,8 @@ namespace PokemonBattle
                     {
                         enemy.GetHit(50);
                     }
+
+                    SpecialCount--;
                 }
 
                 return true;
@@ -34,9 +38,6 @@ namespace PokemonBattle
             {
                 return false;
             }
-
-
-            SpecialCount = 0;
         }
 
         public override bool GetHit(int damage)

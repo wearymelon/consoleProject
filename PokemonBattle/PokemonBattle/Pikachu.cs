@@ -12,7 +12,7 @@ namespace PokemonBattle
         int stunDamage = 40;
 
         public Pikachu()
-            : base(2, 125, 310, "Pikachu") { }
+            : base(2, 1, 125, 310, "Pikachu") { }
 
         public override bool SpecialMove(Pokemon enemy)
         {

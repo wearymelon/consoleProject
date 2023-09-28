@@ -12,7 +12,7 @@ namespace PokemonBattle
         public bool isDodging = false;
 
         public Magikarp()
-            : base(2, 30, 1000, "Magikarp") { }    
+            : base(2, 1, 30, 1000, "Magikarp") { }    
 
         public override bool SpecialMove(Pokemon enemy)
         {
@@ -26,6 +26,7 @@ namespace PokemonBattle
             else
             {
                 return false;
+
             }
 
             

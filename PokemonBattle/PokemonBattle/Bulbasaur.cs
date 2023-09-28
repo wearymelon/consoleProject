@@ -14,15 +14,15 @@ namespace PokemonBattle
         bool isShieldActive = false;
 
         public Bulbasaur()
-            : base(3, 70, 500, "Bulbasaur") { }
+            : base(3, 1, 70, 500, "Bulbasaur") { }
         
 
         public override bool SpecialMove(Pokemon enemy)
         {
 
-            if (SpecialCount == SpecialNeed)
+            if (SpecialCount >= SpecialNeed)
             {
-                SpecialCount++;
+                SpecialCount--;
 
                 return true;
             }

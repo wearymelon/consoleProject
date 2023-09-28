@@ -12,7 +12,7 @@ namespace PokemonBattle
 
         bool isSquirtActive = false;
         public Squirtle()
-              : base(3, 80, 460, "Squirtle") { }
+              : base(3, 1, 80, 460, "Squirtle") { }
 
         public override bool SpecialMove(Pokemon enemy)
         {

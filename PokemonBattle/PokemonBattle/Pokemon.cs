@@ -8,9 +8,9 @@ namespace PokemonBattle
 {
     public abstract class Pokemon
     {
-        public Pokemon(int specialCount, int damage, int health, string pokemonName)
+        public Pokemon(int specialCount, int specialNeed, int damage, int health, string pokemonName)
         {
-            SpecialNeed = specialCount;
+            SpecialNeed = specialNeed;
             SpecialCount = specialCount;
             AttackDamage = damage;
             Health = health;

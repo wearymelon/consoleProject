@@ -29,6 +29,9 @@ namespace PokemonBattle
 
             Pokemon opponent;
 
+
+            bool didYouWin = false;
+
             bool isProgramRunning = true;
 
 
@@ -63,11 +66,11 @@ namespace PokemonBattle
 
                         while (pokemons[MyPokemon].Health > 0  && opponent.Health > 0)
                         {
-                            Console.WriteLine("Would you like to do a basic attack or a special move?");
+                            Console.WriteLine("press 1 for basic attack and press 2 for special");
 
                             string attackChoice = Console.ReadLine();
 
-                            if (attackChoice == "basic")
+                            if (attackChoice == "1")
                             {
                                 pokemons[MyPokemon].BaseAttack(opponent);
 
@@ -86,7 +89,7 @@ namespace PokemonBattle
                                 }
                             }
 
-                            else if (attackChoice == "special")
+                            else if (attackChoice == "2")
                             {
 
                                 if (pokemons[MyPokemon].SpecialCount > 0)
@@ -135,9 +138,38 @@ namespace PokemonBattle
                             {
                                 opponent.BaseAttack(pokemons[MyPokemon]);
                             }
+
+
+                            if (opponent.Health <= 0 && opponent.Health < pokemons[MyPokemon].Health)
+                            {
+                                didYouWin = true;
+                            }
+
+                            else if (pokemons[MyPokemon].Health <= 0 && pokemons[MyPokemon].Health < opponent.Health)
+                            {
+                                didYouWin = false;
+                            }
                         }
 
-                       
+                        if (didYouWin == true)
+                        {
+                            Console.WriteLine("You have won and triumphed over your opponent! \n");
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("You have been defeated at the hand of your opponent! \n \n");
+                        }
+
+                        Console.WriteLine("Would you like to play again??");
+
+                        string playAgainResponse = Console.ReadLine();
+
+
+                        if (playAgainResponse == "yes")
+                        {
+                            startGame = "s";
+                        }
 
                     }
                     else if (ConfirmPokemon == "2")
