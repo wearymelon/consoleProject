@@ -55,14 +55,12 @@ namespace PokemonBattle
         /// <returns></returns>
         public bool BaseAttack(Pokemon enemy)
         {
-            enemy.GetHit(AttackDamage);
+            return enemy.GetHit(AttackDamage);
 
             if (enemy.Health <= 0)
             {
-                return true;
+                return false;
             }
-
-            return false;
         }
 
         public abstract bool SpecialMove(Pokemon enemy);

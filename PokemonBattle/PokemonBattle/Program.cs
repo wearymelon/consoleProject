@@ -15,8 +15,8 @@ namespace PokemonBattle
 
             Pokemon[] pokemons = new Pokemon[]
             { 
-                new Bulbasaur(),
                 new Pikachu(),
+                new Bulbasaur(),
                 new Charmander(),
                 new Squirtle(),
                 new Magikarp(),
@@ -59,7 +59,10 @@ namespace PokemonBattle
                     {
                         opponent = pokemons[random.Next(0, pokemons.Length)];
 
-                        Console.WriteLine($"Great! Your opponent chose {opponent.Print()}");
+                        Console.WriteLine($"Great! Your opponent chose {opponent.Print()}.");
+
+
+                        Console.WriteLine($"Your starting health is {pokemons[MyPokemon].Health} and your opponent's starting health is {opponent.Health}");
 
 
                         //
@@ -72,9 +75,9 @@ namespace PokemonBattle
 
                             if (attackChoice == "1")
                             {
-                                pokemons[MyPokemon].BaseAttack(opponent);
 
-                                if (opponent.GetHit(pokemons[MyPokemon].AttackDamage))
+
+                                if (pokemons[MyPokemon].BaseAttack(opponent))
                                 {
                                     Console.WriteLine($"{opponent.Print()} has taken damage! They are now at {opponent.Health} health. \n");   
                                 }
@@ -115,6 +118,9 @@ namespace PokemonBattle
                                     opponent.SpecialMove(pokemons[MyPokemon]);
 
 
+                                    opponent.SpecialCount--;
+
+
                                     Console.WriteLine($"The opponent has used their special move!  You are at {pokemons[MyPokemon].Health} health and your opponent is at {opponent.Health} health. \n");
                                 }
                                 else
@@ -129,7 +135,7 @@ namespace PokemonBattle
                             }
 
 
-                            if (Random.Shared.Next(2) == 1 && opponent.SpecialCount >= opponent.SpecialNeed)
+                            if (Random.Shared.Next(3) == 1 && opponent.SpecialCount >= opponent.SpecialNeed)
                             {
                                 opponent.SpecialMove(pokemons[MyPokemon]);
                             }
@@ -149,9 +155,15 @@ namespace PokemonBattle
                             {
                                 didYouWin = false;
                             }
+
+
+                            pokemons[MyPokemon].Update(opponent);
+
+                            opponent.Update(pokemons[MyPokemon]);
+
                         }
 
-                        if (didYouWin == true)
+                        if (didYouWin != true)
                         {
                             Console.WriteLine("You have won and triumphed over your opponent! \n");
                         }

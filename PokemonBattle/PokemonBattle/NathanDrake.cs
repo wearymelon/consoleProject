@@ -27,9 +27,10 @@ namespace PokemonBattle
                     {
                         enemy.GetHit(50);
                     }
-
-                    SpecialCount--;
                 }
+
+                SpecialCount = 0;
+
 
                 return true;
             }
