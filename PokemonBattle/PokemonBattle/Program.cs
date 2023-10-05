@@ -100,11 +100,15 @@ namespace PokemonBattle
 
                                     pokemons[MyPokemon].SpecialMove(opponent);
 
-
-
-                                    Console.WriteLine($"You have performed your special move! You are at {pokemons[MyPokemon].Health} health and your opponent is at {opponent.Health} health. \n");
-
-                                    Console.WriteLine($"You have {pokemons[MyPokemon].SpecialCount} special uses left before cooldown is required. \n");
+                                    if (pokemons[MyPokemon].SpecialCount > 0)
+                                    {
+                                        Console.WriteLine($"You have {pokemons[MyPokemon].SpecialCount} special uses left before cooldown is required. \n");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"You have performed your special move! You are at {pokemons[MyPokemon].Health} health and your opponent is at {opponent.Health} health. \n");
+                                    }
+                                    
 
                                 }
 

@@ -47,6 +47,8 @@ namespace PokemonBattle
             {
                 Health += dodgeRecoveryAmount;
 
+                
+
                 return false;
             }
             else
