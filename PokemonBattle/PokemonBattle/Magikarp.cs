@@ -59,15 +59,17 @@ namespace PokemonBattle
             {
                 Health += 10;
             }
-            if (SpecialCount < SpecialNeed)
-            {
-                SpecialCount++;
-            }
         }
-
         public override string Print()
         {
             return "Magikarp";
+        }
+
+        public override void PrintDescription()
+        {
+            Console.WriteLine("Magikarp is a waterbottle type pokemon. He has a base damage of 30, making him the weakest pokemon of all," +
+                "\nbut he has the highest health, having 1000 health. His special ability allows him to dodge the next attack thrown at him." +
+                "\nHe can dodge twice before he won't be able to anymore.");
         }
     }
 }

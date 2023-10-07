@@ -49,7 +49,7 @@ namespace PokemonBattle
 
                 string startGame = Console.ReadLine();
 
-                if (startGame != "~")
+                if (startGame != "~" && startGame != "3")
                 {
                     Console.WriteLine("Welcome to Pokemon battle! Choose your pokemon. \n Pikachu (Press 1) \n Bulbasaur (Press 2) \n Charmander (Press 3) \n Squirtle (Press 4) \n Magikarp (Press 5) \n Nathan Drake (Press 6)");
 
@@ -194,6 +194,7 @@ namespace PokemonBattle
                         }
 
                     }
+
                     else if (ConfirmPokemon == "2")
                     {
                         ;
@@ -201,49 +202,18 @@ namespace PokemonBattle
                 }
                 if (startGame == "3")
                 {
-                    Console.WriteLine("\n \n \n Welcome to the pokemon wiki! Here you can read about each pokemon and their abilities. He are the the chapters (press the chapter number in order to read about the pokemon):" +
-                        "\n Chapter 1: Pikachu" +
-                        "\n Chapter 2: Bulbasaur" +
-                        "\n Chapter 3: Charmander" +
-                        "\n Chapter 4: Squirtle" +
-                        "\n Chapter 5: Magikarp" +
-                        "\n Chapter 6: Nathan Drake");
+                    Console.WriteLine("\n \n \n Welcome to the pokemon wiki! Here you can read about each pokemon and their abilities. He are the the chapters (press the chapter number in order to read about the pokemon");
 
-                    string chapterChosen = Console.ReadLine();
 
-                    switch (chapterChosen)
+                    for (int i = 0; i < pokemons.Length; i++)
                     {
-                        case "1":
-
-                            Console.WriteLine("Pikachu is an electric pokemon. He has the highest base damage, clocking in with 125 damage per basic strike," +
-                                "\nbut lacks in health as he only has 310 health. His special attack hits for 95 damage and stuns the enemy." +
-                                "\nfor the following turns in which the enemy is stunned, the enemy is dealt 40 damage as a result of the stun. \n\n" +
-                                "press 4 to go to start screen or press 5 to choose another chapter.");
-
-                            break;
-
-                        case "2":
-                            
-
-
-                            break;
-
-                        case "3":
-                            //code here
-                            break;
-
-                        case "4":
-                            //code here
-                            break;
-
-                        case "5":
-                            //code here
-                            break;
-
-                        case "6":
-                            //code here
-                            break;
+                        Console.WriteLine($"{i + 1}: {pokemons[i].Print()}");
                     }
+
+                    int chapterChosen = int.Parse(Console.ReadLine());
+
+                    pokemons[chapterChosen - 1].PrintDescription();
+
 
                     //ask
 

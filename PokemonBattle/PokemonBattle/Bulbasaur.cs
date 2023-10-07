@@ -36,11 +36,9 @@ namespace PokemonBattle
 
         public override bool GetHit(int damage)
         {
-            if (SpecialCount >= 1)
+            if (SpecialCount <= 1)
             {
                 Health -= damage / 2;
-
-                SpecialCount++;
             }
             else
             {
@@ -62,6 +60,14 @@ namespace PokemonBattle
         public override string Print()
         {
             return "Bulbasaur";
+        }
+
+        public override void PrintDescription()
+        {
+            Console.WriteLine("Bulbasaur is a defense type pokemon. He has a base damage of 70, and has 500 health, making him a pretty balanced pokemon." +
+                                "\nHis special ability is a shield that reduces attacks thrown at him by half." +
+                                "\nHe is able to use the shield 3 times before it's gone for good.\n\n" +
+                                "press 4 to go to start screen or press 5 to choose another chapter.");
         }
     }
 }

@@ -53,16 +53,18 @@ namespace PokemonBattle
             {
                 enemy.AttackDamage = originalEnemyAttack;
             }
-
-            if (SpecialCount < SpecialNeed)
-            {
-                SpecialCount++;
-            }
         }
 
         public override string Print()
         {
             return "Squirtle";
+        }
+
+        public override void PrintDescription()
+        {
+            Console.WriteLine("Squirtle is a water type pokemon. He has a base damage of 80, and has 460 health, leaning him more towards a defense type." +
+                "\nHis special ability is to squirt at enemies, therefore reducing their attack damage by 15% for 3 turns." +
+                "\nOnce he uses all 3 of his special uses, he won't be able to anymore.");
         }
     }
 }

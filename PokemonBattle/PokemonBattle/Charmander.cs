@@ -11,6 +11,8 @@ namespace PokemonBattle
 
         int flameDamage = 45;
 
+        int flameEffect = 20;
+
         bool isFlameBurning;
 
 
@@ -73,11 +75,24 @@ namespace PokemonBattle
 
                 isFlameBurning = true;
             }
+
+            if (isFlameBurning == true)
+            {
+                enemy.Health -= flameEffect;
+            }
         }
 
         public override string Print()
         {
             return "Charmander";
+        }
+
+        public override void PrintDescription()
+        {
+            Console.WriteLine("Charmander is a fire type pokemon. He has a base damage of 90, and has 385 health, making him more of an attack type." +
+                "\nHis special ability allows him to spit a fireball at you that deals 45 damage." +
+                "\nThe fireball then starts to effect the opponent every turn, dealing 20 damage." +
+                "\nHe has 2 uses, but there is a 25% chance that he recieves an extra use every turn.");
         }
 
     }

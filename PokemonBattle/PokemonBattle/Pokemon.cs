@@ -93,6 +93,8 @@ namespace PokemonBattle
         public abstract bool GetHit(int damage);
 
         public abstract string Print();
+
+        public abstract void PrintDescription();
       
     }
 }
