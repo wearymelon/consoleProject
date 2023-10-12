@@ -14,7 +14,7 @@ namespace PokemonBattle
         public Squirtle()
               : base(3, 1, 80, 460, "Squirtle") { }
 
-        public override bool SpecialMove(Pokemon enemy)
+        public override bool SpecialMove()
         {
 
             if (SpecialCount == SpecialNeed)

@@ -88,14 +88,18 @@ namespace PokemonBattle
                                     Console.WriteLine($"{opponent.Print()} has taken damage! They are now at {opponent.Health} health. \n");   
                                 }
 
+                                
+
                                 //Don't use this line, this was just Nikita's experiment:
                                 //Console.WriteLine($"you have " + (opponent.GetHit(pokemons[MyPokemon].AttackDamage, pokemons[MyPokemon]) ? "hit" : "not hit") + " your opponent");
 
 
-                                if (pokemons[MyPokemon].GetHit(opponent.AttackDamage))
+                                if (opponent.Health > 0 && pokemons[MyPokemon].GetHit(opponent.AttackDamage))
                                 {
                                     Console.WriteLine($"Opponent is making a move... You have taken damage! You are now at {pokemons[MyPokemon].Health} health. \n");
                                 }
+
+
                             }
 
                             else if (attackChoice == "2")
@@ -104,35 +108,30 @@ namespace PokemonBattle
                                 if (pokemons[MyPokemon].SpecialCount > 0)
                                 {
 
-                                    pokemons[MyPokemon].SpecialMove(opponent);
+                                    pokemons[MyPokemon].SpecialMove();
 
-                                    if (pokemons[MyPokemon].SpecialCount > 0)
+
+                                    Console.WriteLine($"\n\nYou have performed your special move! You are at {pokemons[MyPokemon].Health} " +
+                                          $"health and your opponent is at {opponent.Health} health. \n");
+
+
+                                    if (pokemons[MyPokemon].SpecialCount == 0)
                                     {
-                                        Console.WriteLine($"You have {pokemons[MyPokemon].SpecialCount} special uses left before cooldown is required. \n");
+                                        Console.WriteLine("You do not have any special uses left! Either Cooldown is required or your are COMPLETELY out of uses.\n");
                                     }
+
                                     else
                                     {
-                                        Console.WriteLine($"You have performed your special move! You are at {pokemons[MyPokemon].Health} health and your opponent is at {opponent.Health} health. \n");
+                                        Console.WriteLine($"\nYou have {pokemons[MyPokemon].SpecialCount} special uses left before cooldown is required. \n");
                                     }
-                                    
 
                                 }
 
-                                else
+                                if (opponent.Health > 0 && opponent.SpecialCount > 0)
                                 {
-                                    Console.WriteLine("You do not have any special uses left! Cooldown is now required.  \n");
+                                    opponent.SpecialMove();
                                 }
 
-                                if (opponent.SpecialCount > 0)
-                                {
-                                    opponent.SpecialMove(pokemons[MyPokemon]);
-
-
-                                    opponent.SpecialCount--;
-
-
-                                    Console.WriteLine($"The opponent has used their special move!  You are at {pokemons[MyPokemon].Health} health and your opponent is at {opponent.Health} health. \n");
-                                }
                                 else
                                 {
                                     Console.WriteLine("Your opponent has tried to use their specal move on you but they are out of uses and need to let it cooldown. Looks like you get to catch a break! \n");
@@ -147,7 +146,12 @@ namespace PokemonBattle
 
                             if (Random.Shared.Next(3) == 1 && opponent.SpecialCount >= opponent.SpecialNeed)
                             {
-                                opponent.SpecialMove(pokemons[MyPokemon]);
+                                opponent.SpecialMove();
+
+                                opponent.SpecialCount--;
+
+                                Console.WriteLine($"The opponent has used their special move!  You are at {pokemons[MyPokemon].Health} health and your opponent is at {opponent.Health} health. \n");
+
                             }
 
                             else
@@ -156,12 +160,12 @@ namespace PokemonBattle
                             }
 
 
-                            if (opponent.Health <= 0 && opponent.Health < pokemons[MyPokemon].Health)
+                            if (opponent.Health <= 0)
                             {
                                 didYouWin = true;
                             }
 
-                            else if (pokemons[MyPokemon].Health <= 0 && pokemons[MyPokemon].Health < opponent.Health)
+                            else if (pokemons[MyPokemon].Health <= 0)
                             {
                                 didYouWin = false;
                             }
@@ -173,14 +177,14 @@ namespace PokemonBattle
 
                         }
 
-                        if (didYouWin != true)
+                        if (didYouWin == true)
                         {
-                            Console.WriteLine("You have won and triumphed over your opponent! \n");
+                            Console.WriteLine($"You have won and triumphed over your opponent! Your final health was {pokemons[MyPokemon].Health}\n");
                         }
 
                         else
                         {
-                            Console.WriteLine("You have been defeated at the hand of your opponent! \n \n");
+                            Console.WriteLine($"You have been defeated at the hand of your opponent! Your final health was {pokemons[MyPokemon].Health}\n \n");
                         }
 
                         Console.WriteLine("Would you like to play again??");
@@ -190,6 +194,11 @@ namespace PokemonBattle
 
                         if (playAgainResponse == "yes")
                         {
+                            pokemons[MyPokemon].ResetInitialHealth();
+
+                            opponent.ResetInitialHealth();
+
+
                             startGame = "s";
                         }
 

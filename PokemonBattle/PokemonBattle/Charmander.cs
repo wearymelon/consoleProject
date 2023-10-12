@@ -20,7 +20,7 @@ namespace PokemonBattle
         public Charmander()
             : base(2, 1, 90, 385, "Charmander") { }
 
-        public override bool SpecialMove(Pokemon enemy)
+        public override bool SpecialMove()
         {
 
             if (SpecialCount == SpecialNeed)

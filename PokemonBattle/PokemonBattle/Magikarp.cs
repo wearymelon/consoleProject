@@ -14,7 +14,7 @@ namespace PokemonBattle
         public Magikarp()
             : base(2, 1, 30, 1000, "Magikarp") { }    
 
-        public override bool SpecialMove(Pokemon enemy)
+        public override bool SpecialMove()
         {
             if (SpecialCount == SpecialNeed)
             {

@@ -14,6 +14,7 @@ namespace PokemonBattle
             SpecialCount = specialCount;
             AttackDamage = damage;
             Health = health;
+            InitialHealth = health;
         }
 
 
@@ -34,6 +35,9 @@ namespace PokemonBattle
         public bool isPlayer;
 
         public string PokemonName;
+
+
+        private int InitialHealth;
 
 
         /// <summary>
@@ -63,7 +67,7 @@ namespace PokemonBattle
             }
         }
 
-        public abstract bool SpecialMove(Pokemon enemy);
+        public abstract bool SpecialMove();
 
 
         public virtual void AIAttack(Pokemon enemy, Random rand)
@@ -74,7 +78,7 @@ namespace PokemonBattle
             }
             else
             {
-                SpecialMove(enemy);
+                SpecialMove();
             }
 
         }
@@ -95,6 +99,11 @@ namespace PokemonBattle
         public abstract string Print();
 
         public abstract void PrintDescription();
-      
+
+
+        public virtual void ResetInitialHealth()
+        {
+            Health = InitialHealth;
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace PokemonBattle
             : base(3, 1, 70, 500, "Bulbasaur") { }
         
 
-        public override bool SpecialMove(Pokemon enemy)
+        public override bool SpecialMove()
         {
 
             if (SpecialCount >= SpecialNeed)

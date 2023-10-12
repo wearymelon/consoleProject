@@ -14,15 +14,11 @@ namespace PokemonBattle
         public Pikachu()
             : base(2, 1, 125, 310, "Pikachu") { }
 
-        public override bool SpecialMove(Pokemon enemy)
+        public override bool SpecialMove()
         {
             if (SpecialCount == SpecialNeed)
             {
-                enemy.IsStunned = true;
-
                 SpecialCount = 0;
-
-                enemy.GetHit(95);
 
                 return true;
             }
@@ -47,6 +43,11 @@ namespace PokemonBattle
 
         public override void Update(Pokemon enemy)
         {
+            if (SpecialCount > 0)
+            {
+                enemy.IsStunned = true;
+            }
+
             if (SpecialCount < SpecialNeed && enemy.IsStunned == true)
             {
                 enemy.Health = enemy.Health - stunDamage;
