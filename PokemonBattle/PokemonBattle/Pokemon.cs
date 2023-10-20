@@ -67,7 +67,7 @@ namespace PokemonBattle
             }
         }
 
-        public abstract bool SpecialMove();
+        public abstract bool SpecialMove(Pokemon enemy);
 
 
         public virtual void AIAttack(Pokemon enemy, Random rand)
@@ -78,7 +78,7 @@ namespace PokemonBattle
             }
             else
             {
-                SpecialMove();
+                SpecialMove(enemy);
             }
 
         }

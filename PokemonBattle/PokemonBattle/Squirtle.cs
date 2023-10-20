@@ -14,11 +14,13 @@ namespace PokemonBattle
         public Squirtle()
               : base(3, 1, 80, 460, "Squirtle") { }
 
-        public override bool SpecialMove()
+        public override bool SpecialMove(Pokemon enemy)
         {
 
             if (SpecialCount == SpecialNeed)
             {
+                enemy.GetHit(30);
+
                 SpecialCount = 0;
                 isSquirtActive = true;
 

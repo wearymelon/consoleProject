@@ -9,7 +9,7 @@ namespace PokemonBattle
     internal class Charmander : Pokemon
     {
 
-        int flameDamage = 45;
+        int flameDamage = 60;
 
         int flameEffect = 20;
 
@@ -20,11 +20,13 @@ namespace PokemonBattle
         public Charmander()
             : base(2, 1, 90, 385, "Charmander") { }
 
-        public override bool SpecialMove()
+        public override bool SpecialMove(Pokemon enemy)
         {
 
             if (SpecialCount == SpecialNeed)
             {
+                enemy.GetHit(flameDamage);
+
                 SpecialCount = 0;
 
                 isFlameBurning = true;
@@ -56,16 +58,7 @@ namespace PokemonBattle
 
         public override void Update(Pokemon enemy)
         {
-            if (SpecialCount > 0)
-            {
-                enemy.Health -= flameDamage;
-
-                
-            }
-            else
-            {
-                isFlameBurning = false;
-            }
+           
 
             SpecialCount--;
 
@@ -80,6 +73,8 @@ namespace PokemonBattle
             {
                 enemy.Health -= flameEffect;
             }
+
+            isFlameBurning = false;
         }
 
         public override string Print()

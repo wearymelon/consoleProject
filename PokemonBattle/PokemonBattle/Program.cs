@@ -16,6 +16,31 @@ namespace PokemonBattle
         //only at beginning of game.
         //make function for wiki
 
+        //C4LgTgrgdgNAJiA1AHwAICYCMBYAUKgZgAIMTMB2PAbzyLrIDYSAWIgYQAsBTAYwGsAqgGcuYACIBDYBIAUqTAAYA2gF0iwLgA9gAFQD2nXnwCUtelXqWzlunD3WbNXDZdkFRCCLA6twIgF4iACI9PiCAbgdXIgAzPTAZAEsoP0SAogVwojSAHnVffUN
+
+
+
+        static string GetResponse(string[] acceptableResponses)
+        {
+            while (true)
+            {
+                string userResponse = Console.ReadLine();
+
+                for (int i = 0; i < acceptableResponses.Length; i++)
+                {
+                    if (acceptableResponses[i] == userResponse)
+                    {
+                        return userResponse;
+                    }
+                }
+
+
+                Console.WriteLine("why did you miss type idiot.");
+
+            } 
+
+        }
+
         static void Main(string[] args)
         {
 
@@ -35,8 +60,6 @@ namespace PokemonBattle
 
             Pokemon opponent;
 
-
-            bool didYouWin = false;
 
             bool isProgramRunning = true;
 
@@ -63,7 +86,13 @@ namespace PokemonBattle
 
                     if (ConfirmPokemon == "1")
                     {
-                        opponent = pokemons[random.Next(0, pokemons.Length)];
+
+                        do
+                        {
+
+                            opponent = pokemons[random.Next(0, pokemons.Length)];
+
+                        }while (opponent == pokemons[MyPokemon]);
 
                         Console.WriteLine($"Great! Your opponent chose {opponent.Print()}.");
 
@@ -91,7 +120,8 @@ namespace PokemonBattle
                                 
 
                                 //Don't use this line, this was just Nikita's experiment:
-                                //Console.WriteLine($"you have " + (opponent.GetHit(pokemons[MyPokemon].AttackDamage, pokemons[MyPokemon]) ? "hit" : "not hit") + " your opponent");
+                                //Console.WriteLine($"you have " + (opponent.
+                                //(pokemons[MyPokemon].AttackDamage, pokemons[MyPokemon]) ? "hit" : "not hit") + " your opponent");
 
 
                                 if (opponent.Health > 0 && pokemons[MyPokemon].GetHit(opponent.AttackDamage))
@@ -108,7 +138,7 @@ namespace PokemonBattle
                                 if (pokemons[MyPokemon].SpecialCount > 0)
                                 {
 
-                                    pokemons[MyPokemon].SpecialMove();
+                                    pokemons[MyPokemon].SpecialMove(opponent);
 
 
                                     Console.WriteLine($"\n\nYou have performed your special move! You are at {pokemons[MyPokemon].Health} " +
@@ -129,7 +159,7 @@ namespace PokemonBattle
 
                                 if (opponent.Health > 0 && opponent.SpecialCount > 0)
                                 {
-                                    opponent.SpecialMove();
+                                    opponent.SpecialMove(opponent);
                                 }
 
                                 else
@@ -146,7 +176,7 @@ namespace PokemonBattle
 
                             if (Random.Shared.Next(3) == 1 && opponent.SpecialCount >= opponent.SpecialNeed)
                             {
-                                opponent.SpecialMove();
+                                opponent.SpecialMove(opponent);
 
                                 opponent.SpecialCount--;
 
@@ -160,24 +190,13 @@ namespace PokemonBattle
                             }
 
 
-                            if (opponent.Health <= 0)
-                            {
-                                didYouWin = true;
-                            }
-
-                            else if (pokemons[MyPokemon].Health <= 0)
-                            {
-                                didYouWin = false;
-                            }
-
-
                             pokemons[MyPokemon].Update(opponent);
 
                             opponent.Update(pokemons[MyPokemon]);
 
                         }
 
-                        if (didYouWin == true)
+                        if (opponent.Health <= 0)
                         {
                             Console.WriteLine($"You have won and triumphed over your opponent! Your final health was {pokemons[MyPokemon].Health}\n");
                         }
@@ -187,12 +206,14 @@ namespace PokemonBattle
                             Console.WriteLine($"You have been defeated at the hand of your opponent! Your final health was {pokemons[MyPokemon].Health}\n \n");
                         }
 
-                        Console.WriteLine("Would you like to play again??");
-
-                        string playAgainResponse = Console.ReadLine();
+                        Console.WriteLine("Would you like to play again? yes or no?");
 
 
-                        if (playAgainResponse == "yes")
+                        string[] validResponses = { "yes", "no" };
+
+                        
+
+                        if(GetResponse(validResponses) == validResponses[0])
                         {
                             pokemons[MyPokemon].ResetInitialHealth();
 
@@ -200,6 +221,10 @@ namespace PokemonBattle
 
 
                             startGame = "s";
+                        }
+                        else
+                        {
+                            return;
                         }
 
                     }

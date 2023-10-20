@@ -16,10 +16,19 @@ namespace PokemonBattle
 
 
         
-        public override bool SpecialMove()
+        public override bool SpecialMove(Pokemon enemy)
         {
             if (SpecialCount >= SpecialNeed)
             {
+                for (int i = 0; i < SpecialCount; i++)
+                {
+
+                    if (Random.Shared.Next(1, 101) <= 43)
+                    {
+                        enemy.GetHit(60);
+                    }
+                }
+
                 SpecialCount = 0;
 
                 return true;
@@ -70,14 +79,7 @@ namespace PokemonBattle
         {
             if (SpecialCount > 0)
             {
-                for (int i = 0; i < SpecialCount; i++)
-                {
-
-                    if (Random.Shared.Next(1, 101) <= 43)
-                    {
-                        enemy.GetHit(60);
-                    }
-                }
+               
             }
 
             if (Random.Shared.Next(10) == 1)
